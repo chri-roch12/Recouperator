@@ -27,6 +27,8 @@ gem 'foundation-rails'
 gem 'devise'
 # Use cancancan role authorization
 gem "cancancan"
+# Use CarrierWave for image uploads
+gem 'carrierwave', '~> 1.0'
 # Use when deploying to heroku
 gem 'rails_12factor', group: :production
 
