@@ -2,41 +2,8 @@
 
 <div class="card">
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
-    <div class="field form-group">
-      <%= f.text_field :name, autofocus: true, required: true, class: "form-control", placeholder: "What's your name?" %>
-    </div>
-
-    <div class="field form-group">
-      <div class="row">
-      <fieldset class="large-6 columns">
-        <legend>Are you signing up as a patient, or a clinician?</legend>
-        <input type="radio" name="user[role]" value="patient" id="patient" required><label for="patient">Patient</label>
-        <input type="radio" name="user[role]" value="clinician" id="clinician"><label for="clinician">Clinician</label>
-      </fieldset>
-    </div>
-
-    <div class="field form-group">
-      <%= f.email_field :email, class: "form-control", placeholder: "What's your e-mail?" %>
-    </div>
-
-    <div class="field">
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off", placeholder: "Enter a password!" %>
-    </div>
-
-    <div class="field">
-      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm password." %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
-<% end %>
+  <%= render "devise/registrations/newform" %>
+  
 </div>
 
 <%= render "devise/shared/links" %>
