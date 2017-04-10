@@ -10,7 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    current_user.create_token
   end
 
   # GET /resource/edit
