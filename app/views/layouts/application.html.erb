@@ -1,12 +1,36 @@
-<meta charset="utf-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
 
- <%= csrf_meta_tags %>
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 
-</head>
+    <title><%= content_for?(:title) ? yield(:title) : 'Recouperator' %></title>
+
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <header class='top-bar'>
+      <nav>
+        <ul class="top-bar-right">
+          <% if current_user %>
+          <li class="col-md-1 col-sm-2 col-xs-12 nav-item"><%= link_to "Home", root_path, class: "link" %></li>
+          <li class="col-md-1 col-sm-2 col-xs-12 nav-item"><%= link_to "My Profile", user_path(current_user), class: "link" %></li>
+          <li class="col-md-1 col-sm-2 col-xs-12 nav-item"><%= link_to "Logout", destroy_user_session_path, method: "delete", class: "link" %></li>
+          <% else %>
+          <li><%= link_to "Sign Up", new_user_registration_path, class: "link" %></li>
+          <li><%= link_to "Login", new_user_session_path, class: "link" %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <p class='notice'><%= notice %></p>
+    <p class='alert'><%= alert %></p>
+
 
 <body>
     <div class="title-bar">
@@ -19,36 +43,30 @@
         <%= link_to "Log Out", destroy_user_session_path, class: "button", method: "delete" %>
     <%= render "shared/titlebar" %>
 
-    <% if alert || notice %>
-      <div id="flash" class="flash text-center">
-        <h4><%= notice %><%= alert %></h4>
-   </div>
-    </div>
-    <% if notice || alert %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
- <% end %>
 
- <%= yield %>
-
-    <footer class="footer">
-      <div class="row full-width">
-        <div class="small-12 medium-4 columns">
-          <i class="fi-lightbulb"></i>
-          <h6>A test place for mission statement.</h6>
+    <footer class='navbar text-center'>
+      <div class='container'>
+        <div class=''>
+          <h4>About</h4>
+          <div class=''>
+            <h5>Recouperator is a project created by Chris Prochnow.</h5>
+          </div>
         </div>
-        <div class="small-12 medium-4 columns">
-          <i class="fi-torsos-all"></i>
-          <h6>More test stuff.</h6>
-        </div>
-        <div class="small-12 medium-4 columns">
-          <i class="fi-link"></i>
-          <h6>Register</h6>
-          <h6>Log-In</h6>
+        <div class=''>
+          <h4>Contact</h4>
+        <div class=''>
+          <h4>Links</h4>
+          <% if current_user %>
+          <%= link_to 'My Profile', user_path(current_user), class: 'link' %><br>
+          <%= link_to 'Logout', destroy_user_session_path, method: 'delete', class: 'link' %><br>
+          <% else %>
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'link' %><br>
+          <%= link_to 'Login', new_user_session_path, class: 'link' %><br>
+          <% end %>
         </div>
       </div>
     </footer>
-    <%= render "shared/footer" %>
 
-</body>
+  </body>
+
 </html>
