@@ -20,6 +20,43 @@ class TreatmentsController < ApplicationController
     @treatment = Treatment.new
   end
 
+  def create
+    @treatment = Treatment.create(treatment_params)
+    @treatment.user = current_user
+    if @treatment.save
+      redirect_to student_treatment_path(@treatment), notice: 'Treatment was successfully created.'
+    else
+      render :new
+    end
+  end
 
+  def edit
+    @treatment = Treatment.find(params[:id])
+  end
+
+  def update
+    @treatment = Treatment.find(params[:id])
+    if @treatment.update(treatment_params)
+      redirect_to student_treatment_path(@treatment), notice: 'Treatment was successfully updated.'
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    treatment = Treatment.find(params[:id])
+    treatment.destroy
+    redirect_to student_treatments_path
+  end
+
+  private
+
+  def set_treatment
+    @treatment = Treatment.find(params[:id])
+  end
+
+  def treatment_params
+    params.require(:treatment).permit(:name, :injury, :frequency, :duration)
+  end
 
 end
