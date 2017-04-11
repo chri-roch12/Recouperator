@@ -1,15 +1,7 @@
 class TreatmentsController < ApplicationController
 
   def index
-    if params[:user_id]
-      @user = User.find(params[:id])
-      if @user
-        @treatments = @user.treatment
-      else
-        redirect_to user
-      end
-      @treatmnents = current_user.treatments
-    end
+      @treatments = current_user.treatments_as_patient
   end
 
   def show
@@ -24,7 +16,11 @@ class TreatmentsController < ApplicationController
     @treatment = Treatment.create(treatment_params)
     @treatment.user = current_user
     if @treatment.save
+      if current_user.patient?
       redirect_to patient_treatment_path(@treatment), notice: 'Treatment was successfully created.'
+    elsif current_user.clinician?
+      redirect_to clinician_treatment_path(@treatment), notice: 'Treatment was successfully created.'
+    end
     else
       render :new
     end
