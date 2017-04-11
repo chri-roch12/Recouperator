@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: [:unspecified, :patient, :clinician]
+  has_many :treatments
 end
