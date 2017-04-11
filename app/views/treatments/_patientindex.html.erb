@@ -1,0 +1,59 @@
+
+<div class="card">
+  <h2>Treatments</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <% if current_user.patient? %>
+
+      <tbody>
+        <% @treatments.each do |treatment| %>
+          <tr>
+            <td><%= link_to "Show", patient_treatment_path(treatment), class: "link" %></td>
+            <td><%= link_to "Edit", edit_patient_treatment_path(treatment),class: "link" %></td>
+            <td><%= link_to "Destroy", patient_treatment_path(treatment), method: :delete, data: { confirm: "Are you sure?" }, class: "link" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><% @treatment %></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+
+      <br>
+
+      <%= link_to "New Treatment", new_patient_treatment_path, class: "link" %>
+    <% elsif current_user.clinician? %>
+
+      <tbody>
+        <% @treatments.each do |treatment| %>
+          <tr>
+            <td><%= link_to "Show", clinician_treatment_path(treatment), class: "link" %></td>
+            <td><%= link_to "Edit", edit_clinician_treatment_path(treatment), class: "link" %></td>
+            <td><%= link_to "Destroy", clinician_treatment_path(treatment), method: :delete, data: { confirm: "Are you sure?" }, class: "link" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><% @treatment %></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+
+      <br>
+
+    <%= link_to "New Treatment", new_clinician_treatment_path, class: "link" %>
+
+    <% else %>
+    redirect_to user_path
+    <% end %>
+
+</div>

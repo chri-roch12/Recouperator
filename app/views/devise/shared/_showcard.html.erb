@@ -2,5 +2,6 @@
   <% if user == current_user %>
   <h4 class="name"><%= user.name %></h4>
     <%= link_to "Edit Profile", edit_user_registration_path, class: "float-right fi-pencil" %>
+    <%= link_to "Treatments", patient_treatments_path, class: "float-right" %>
   <% end %>
 </div>

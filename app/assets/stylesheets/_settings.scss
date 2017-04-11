@@ -620,10 +620,16 @@ $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
 
+// Link styling
+
+.link {
+  color: #000000;
+}
+
 // Body styling
 
 .bodyspace {
-  height: 500px;
+  min-height: 500px;
 }
 
 // Footer styling
