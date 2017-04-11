@@ -1,4 +1,4 @@
-class TreatmentController < ApplicationController
+class TreatmentsController < ApplicationController
 
   def index
     if params[:user_id]
@@ -20,6 +20,6 @@ class TreatmentController < ApplicationController
     @treatment = Treatment.new
   end
 
-  
+
 
 end
