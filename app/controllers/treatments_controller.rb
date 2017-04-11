@@ -24,7 +24,7 @@ class TreatmentsController < ApplicationController
     @treatment = Treatment.create(treatment_params)
     @treatment.user = current_user
     if @treatment.save
-      redirect_to student_treatment_path(@treatment), notice: 'Treatment was successfully created.'
+      redirect_to patient_treatment_path(@treatment), notice: 'Treatment was successfully created.'
     else
       render :new
     end
@@ -37,7 +37,7 @@ class TreatmentsController < ApplicationController
   def update
     @treatment = Treatment.find(params[:id])
     if @treatment.update(treatment_params)
-      redirect_to student_treatment_path(@treatment), notice: 'Treatment was successfully updated.'
+      redirect_to patient_treatment_path(@treatment), notice: 'Treatment was successfully updated.'
     else
       render :new
     end
@@ -46,14 +46,15 @@ class TreatmentsController < ApplicationController
   def destroy
     treatment = Treatment.find(params[:id])
     treatment.destroy
-    redirect_to student_treatments_path
+    redirect_to patient_treatments_path
   end
 
   private
 
-  def set_treatment
-    @treatment = Treatment.find(params[:id])
-  end
+####for later
+  # def set_treatment
+  #   @treatment = Treatment.find(params[:id])
+  # end
 
   def treatment_params
     params.require(:treatment).permit(:name, :injury, :frequency, :duration)
