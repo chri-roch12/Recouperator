@@ -14,14 +14,13 @@
       <tbody>
         <% @treatments.each do |treatment| %>
           <tr>
-            <td><%= link_to "Show", patient_treatment_path(treatment), class: "link" %></td>
-            <td><%= link_to "Edit", edit_patient_treatment_path(treatment),class: "link" %></td>
-            <td><%= link_to "Destroy", patient_treatment_path(treatment), method: :delete, data: { confirm: "Are you sure?" }, class: "link" %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><%= @treatment.name %></td>
-            <td></td>
+            <td><%= treatment.name %></td>
+            <td><%= treatment.injury %></td>
+            <td>
+              <%= link_to "", patient_treatment_path(treatment), class: "fi-compass link" %><p></p>
+              <%= link_to "", edit_patient_treatment_path(treatment),class: "fi-pencil link" %><p></p>
+              <%= link_to "", patient_treatment_path(treatment), method: :delete, data: { confirm: "Are you sure?" }, class: "fi-trash link" %>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -35,14 +34,14 @@
       <tbody>
         <% @treatments.each do |treatment| %>
           <tr>
-            <td><%= link_to "Show", clinician_treatment_path(treatment), class: "link" %></td>
-            <td><%= link_to "Edit", edit_clinician_treatment_path(treatment), class: "link" %></td>
-            <td><%= link_to "Destroy", clinician_treatment_path(treatment), method: :delete, data: { confirm: "Are you sure?" }, class: "link" %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><%= @treatment.name %></td>
-            <td></td>
+            <td><%= treatment.name %></td>
+            <td><%= treatment.injury %></td>
+            <td>
+              <%= link_to "", clinician_treatment_path(treatment), class: "fi-compass link" %><p></p>
+              <%= link_to "", edit_clinician_treatment_path(treatment),class: "fi-pencil link" %><p></p>
+              <%= link_to "", clinician_treatment_path(treatment), method: :delete, data: { confirm: "Are you sure?" }, class: "fi-trash link" %>
+            </td>
+            </td>
           </tr>
         <% end %>
       </tbody>
