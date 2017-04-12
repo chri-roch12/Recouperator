@@ -1,6 +1,5 @@
-<h1>Editing Treatment</h1>
+<h3>Editing Treatment</h3>
 
 <%= render "form", treatment: @treatment %>
 
-<%= link_to "Show", @treatment %> |
-<%= link_to "Back", treatments_path %>
+<%= link_to "Show", patient_treatment_path(@treatment) %> |

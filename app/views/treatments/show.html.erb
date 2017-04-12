@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class="card">
+  <h5>Program name: <%= @treatment.name %></h5>
+  <h5>Injury addressed: <%= @treatment.injury %></h5>
+  <h5>Length of regimine: <%= @treatment.duration %></h5>
+  <h5>Frequency of exercise: <%= @treatment.frequency %></h5>
+</div>
 
 <%= link_to "Edit", edit_patient_treatment_path(@treatment) %> |
 <%= link_to "Back", patient_treatments_path %>

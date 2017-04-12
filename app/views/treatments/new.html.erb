@@ -1,5 +1,9 @@
-<h1>New Treatment</h1>
+<h2>New Treatment</h2>
 
-<%= render "form", treatment: @treatment %>
+<div class="card">
 
-<%= link_to "Back", treatments_path %>
+  <%= render "form", treatment: @treatment %>
+
+</div>
+
+<%= link_to "Back", patient_treatments_path %>
