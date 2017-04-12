@@ -1,5 +1,8 @@
 class TreatmentsController < ApplicationController
 
+    before_action :authenticate_user!
+    
+
   def index
     if current_user.patient?
       @treatments = current_user.treatments_as_patient
