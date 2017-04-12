@@ -20,7 +20,7 @@ class TreatmentsController < ApplicationController
 
   def create
     @treatment = Treatment.create(treatment_params)
-    @treatment.user = current_user
+    # @treatment.user = current_user
     if @treatment.save
       if current_user.patient?
       redirect_to patient_treatment_path(@treatment), notice: 'Treatment was successfully created.'
@@ -59,7 +59,7 @@ class TreatmentsController < ApplicationController
   # end
 
   def treatment_params
-    params.require(:treatment).permit(:name, :injury, :frequency, :duration)
+    params.require(:treatment).permit(:name, :injury, :frequency, :duration, :patient_id, :clinician_id)
   end
 
 end
