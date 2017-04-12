@@ -6,6 +6,12 @@
 
 </div>
 
+<div class="IDcard">
+
+  <%= render "treatments/instructions" %>
+  <h6>Your ID number is <%= current_user.id %></h6>
+
+</div>
 
 <% if current_user.role == "clinician" %>
   <%= link_to "Back", clinician_treatments_path %>

@@ -803,3 +803,14 @@ $transition: all .35s ease-in-out;
     }
   }
 }
+
+// flash messages
+
+.flash {
+  position: relative;
+  top: 40vh;
+  z-index: 100;
+  padding: 7px;
+  border-radius: 2rem;
+  background-color: #999CDB;
+}

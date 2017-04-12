@@ -5,27 +5,39 @@
   </div>
 
   <div class="field form-group">
-    <%= f.text_field :injury, required: true, class: "form-control", placeholder: "What was injured?" %>
+    <%= f.text_area :injury, required: true, class: "form-control", placeholder: "What was injured?" %>
   </div>
 
   <div class="field form-group">
-    <%= f.text_field :frequency, required: true, class: "form-control", placeholder: "How often should you attempt exercise?" %>
+    <%= f.text_area :frequency, required: true, class: "form-control", placeholder: "How often should you attempt exercise?" %>
   </div>
 
   <div class="field form-group">
-    <%= f.text_field :duration, required: true, class: "form-control", placeholder: "How long will treatment take?" %>
+    <%= f.text_area :duration, required: true, class: "form-control", placeholder: "How long will treatment take?" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.number_field :patient_id, required: true, class: "form-control", placeholder: "Patient id number" %>
-  </div>
+  <% if current_user.role == "clinician" %>
+    <div class="field form-group">
+      <%= f.number_field :patient_id, required: true, class: "form-control", placeholder: "Patient id number" %>
+    </div>
 
-  <div class="field form-group">
-    <%= f.hidden_field :clinician_id, required: true, class: "form-control", value: current_user.id %>
-  </div>
+    <div class="field form-group">
+      <%= f.hidden_field :clinician_id, required: true, class: "form-control", value: current_user.id %>
+    </div>
+  <% elsif current_user.role == "patient" %>
+    <div class="field form-group">
+      <%= f.number_field :clinician_id, required: true, class: "form-control", placeholder: "Patient id number" %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.hidden_field :patient_id, required: true, class: "form-control", value: current_user.id %>
+    </div>
+  <% else %>
+    redirect_to user
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>
   </div>
-
+  
 <% end %>

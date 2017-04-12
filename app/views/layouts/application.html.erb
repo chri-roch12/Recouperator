@@ -19,13 +19,17 @@
     <%= render "devise/shared/header" %>
     <div class="row bodyspace">
 
+      <div class="small-9 small-centered large-uncentered columns">
+        <%= yield %>
+      </div>
 
-    <p class='notice'><%= notice %></p>
-    <p class='alert'><%= alert %></p>
+      <% if alert || notice %>
+      <div id="flash" class="flash">
+        <h4><%= notice %><%= alert %></h4>
+      </div>
+      <% end %>
 
-    <%= yield %>
-
-  </div>
+    </div>
 
     <%= render "devise/shared/footer" %>
 

@@ -1,12 +1,12 @@
 <div class="card-block ">
   <% if user == current_user && user.patient? %>
-  <h4 class="name"><%= user.name %></h4>
-    <%= link_to "Edit Profile", edit_user_registration_path, class: "float-right fi-pencil link" %>
-    <%= link_to "Treatments", patient_treatments_path, class: "float-right link" %>
+  <h4 class="text-center"><%= user.name %></h4>
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "float-left fi-pencil link" %>
+    <%= link_to "Treatments", patient_treatments_path, class: "float-right fi-plus link" %>
   <% elsif user == current_user && user.clinician? %>
-  <h4 class="name"><%= user.name %></h4>
-    <%= link_to "Edit Profile", edit_user_registration_path, class: "float-right fi-pencil link" %>
-    <%= link_to "Treatments", clinician_treatments_path, class: "float-right link" %>
+  <h4 class="text-center"><%= user.name %></h4>
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "float-left fi-pencil link" %>
+    <%= link_to "Treatments", clinician_treatments_path, class: "float-right fi-plus link" %>
   <% else %>
     redirect_to user
   <% end %>
