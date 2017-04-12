@@ -1,9 +1,17 @@
 <div class="card">
   <h5>Program name: <%= @treatment.name %></h5>
   <h5>Injury addressed: <%= @treatment.injury %></h5>
-  <h5>Length of regimine: <%= @treatment.duration %></h5>
+  <h5>Length of regimen: <%= @treatment.duration%></h5>
   <h5>Frequency of exercise: <%= @treatment.frequency %></h5>
 </div>
 
-<%= link_to "Edit", edit_patient_treatment_path(@treatment) %> |
-<%= link_to "Back", patient_treatments_path %>
+
+<% if current_user.role == "clinician" %>
+  <%= link_to "Edit", edit_clinician_treatment_path(@treatment) %> |
+  <%= link_to "Back", clinician_treatments_path %>
+  <% elsif current_user.role == "patient" %>
+  <%= link_to "Edit", edit_patient_treatment_path(@treatment) %> |
+  <%= link_to "Back", patient_treatments_path %>
+  <% else %>
+  redirect_to user
+<% end %>
