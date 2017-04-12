@@ -1,7 +1,13 @@
 class TreatmentsController < ApplicationController
 
   def index
+    if current_user.patient?
       @treatments = current_user.treatments_as_patient
+    elsif current_user.clinician?
+      @treatments = current_user.treatments_as_clinician
+    else
+      redirect_to user
+    end
   end
 
   def show
