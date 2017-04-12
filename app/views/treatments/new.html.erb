@@ -1,9 +1,16 @@
-<h2>New Treatment</h2>
+<h3>New Treatment</h3>
 
 <div class="card">
 
-  <%= render "form", treatment: @treatment %>
+  <%= render "createform", treatment: @treatment %>
 
 </div>
 
-<%= link_to "Back", patient_treatments_path %>
+
+<% if current_user.role == "clinician" %>
+  <%= link_to "Back", clinician_treatments_path %>
+  <% elsif current_user.role == "patient" %>
+  <%= link_to "Back", patient_treatments_path %>
+  <% else %>
+  redirect_to user
+<% end %>

@@ -1,0 +1,31 @@
+<%= form_for @treatment, url: {action: "update"} do |f| %>
+
+  <div class="field form-group">
+    <%= f.text_field :name, autofocus: true, required: true, class: "form-control", placeholder: "What's the treatment called?" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.text_field :injury, required: true, class: "form-control", placeholder: "What was injured?" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.text_field :frequency, required: true, class: "form-control", placeholder: "How often should you attempt exercise?" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.text_field :duration, required: true, class: "form-control", placeholder: "How long will treatment take?" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.number_field :patient_id, required: true, class: "form-control", placeholder: "Patient id number" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.hidden_field :clinician_id, required: true, class: "form-control", value: current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

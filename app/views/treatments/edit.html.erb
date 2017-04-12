@@ -1,5 +1,11 @@
 <h3>Editing Treatment</h3>
 
-<%= render "form", treatment: @treatment %>
+<%= render "editform", treatment: @treatment %>
 
-<%= link_to "Show", patient_treatment_path(@treatment) %> |
+<% if current_user.role == "clinician" %>
+  <%= link_to "Show", clinician_treatment_path(@treatment) %>
+  <% elsif current_user.role == "patient" %>
+  <%= link_to "Show", clinician_treatment_path(@treatment) %>
+  <% else %>
+  redirect_to user
+<% end %>

@@ -21,7 +21,7 @@
   </div>
 
   <div class="field form-group">
-    <%= f.number_field :clinician_id, required: true, class: "form-control", placeholder: "Clinician id number" %>
+    <%= f.hidden_field :clinician_id, required: true, class: "form-control", value: current_user.id %>
   </div>
 
   <div class="actions">
